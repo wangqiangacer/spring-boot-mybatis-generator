@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootmybatis.generator.dao.BgVisitLogMapper">
+  <resultMap id="BaseResultMap" type="com.example.springbootmybatis.generator.entity.BgVisitLog">
+    <id column="visit_id" jdbcType="INTEGER" property="visitId" />
+    <result column="ip_addr" jdbcType="VARCHAR" property="ipAddr" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="browser" jdbcType="VARCHAR" property="browser" />
+    <result column="os" jdbcType="VARCHAR" property="os" />
+    <result column="spider" jdbcType="VARCHAR" property="spider" />
+    <result column="request_url" jdbcType="VARCHAR" property="requestUrl" />
+    <result column="error_msg" jdbcType="VARCHAR" property="errorMsg" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="entry_url" jdbcType="VARCHAR" property="entryUrl" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bg_visit_log
+    where visit_id = #{visitId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.springbootmybatis.generator.entity.BgVisitLog">
+    insert into bg_visit_log (visit_id, ip_addr, `location`, 
+      browser, os, spider, 
+      request_url, error_msg, title, 
+      create_by, create_time, `status`, 
+      entry_url)
+    values (#{visitId,jdbcType=INTEGER}, #{ipAddr,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
+      #{browser,jdbcType=VARCHAR}, #{os,jdbcType=VARCHAR}, #{spider,jdbcType=VARCHAR}, 
+      #{requestUrl,jdbcType=VARCHAR}, #{errorMsg,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=CHAR}, 
+      #{entryUrl,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.example.springbootmybatis.generator.entity.BgVisitLog">
+    update bg_visit_log
+    set ip_addr = #{ipAddr,jdbcType=VARCHAR},
+      `location` = #{location,jdbcType=VARCHAR},
+      browser = #{browser,jdbcType=VARCHAR},
+      os = #{os,jdbcType=VARCHAR},
+      spider = #{spider,jdbcType=VARCHAR},
+      request_url = #{requestUrl,jdbcType=VARCHAR},
+      error_msg = #{errorMsg,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      `status` = #{status,jdbcType=CHAR},
+      entry_url = #{entryUrl,jdbcType=VARCHAR}
+    where visit_id = #{visitId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select visit_id, ip_addr, `location`, browser, os, spider, request_url, error_msg, 
+    title, create_by, create_time, `status`, entry_url
+    from bg_visit_log
+    where visit_id = #{visitId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select visit_id, ip_addr, `location`, browser, os, spider, request_url, error_msg, 
+    title, create_by, create_time, `status`, entry_url
+    from bg_visit_log
+  </select>
+</mapper>
